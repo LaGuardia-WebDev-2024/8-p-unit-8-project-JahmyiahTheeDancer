@@ -3,23 +3,40 @@ setup = function() {
     size(600, 400);
 
 };
+var meterLeft = 0;
+var meterRight = 0;
+var meterMid =0;
+
 
 //🟢draw Function - will run on repeat
 draw = function(){
     background(255,255,255,0);
 
    //pick the right meter 
-   drawmeter(400,100);
-   drawmeter(250,100);
-   drawmeter(100,100);
+   if(meterRight == 0) {drawmeter(400,100);}
+   if(meterMid == 0) {drawmeter(250,100);}
+   if(meterLeft == 0) {drawmeter(100,100);}
 
     drawUfo(mouseX, mouseY); 
 
 if((mouseX > 9 && mouseX < 100) && (mouseY > 100 && mouseY < 120))
 {
-  drawboom(100,120)
+  drawboom(100,120) 
+  meterLeft=1
 }
-   
+
+if((mouseX > 350 && mouseX < 450) && (mouseY > 100 && mouseY < 120))
+{
+  drawboom(390,120)
+  meterRight=1
+}
+
+
+if((mouseX > 200  && mouseX < 250 ) && (mouseY > 100 && mouseY < 120))
+{
+  drawboom(240,120)
+  meterMid=1
+}
 };
 
 
@@ -49,6 +66,9 @@ var drawboom = function(boomX, boomY){
   textSize(80);
   text("💥", boomX, boomY);
 }
+
+
+
 
 
 
